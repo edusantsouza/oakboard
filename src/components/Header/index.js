@@ -11,25 +11,25 @@ export default function Header() {
 
   const windowWidth = useScreenWidth();
 
-  // React.useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const handleMenu = (e) => {
-  //       if (!e.target.closest("[data-menu]")) {
-  //         setMenuController(false);
-  //       }
-  //     };
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleMenu = (e) => {
+        if (!e.target.closest("[data-menu]")) {
+          setMenuController(false);
+        }
+      };
 
-  //     window.addEventListener("click", handleMenu);
-  //     return () => {
-  //       window.removeEventListener("click", handleMenu());
-  //     };
-  //   }
-  // }, []);
+      window.addEventListener("click", handleMenu);
+      return () => {
+        window.removeEventListener("click", handleMenu());
+      };
+    }
+  }, []);
 
-  // const handleButtonClick = (e) => {
-  //   e.stopPropagation();
-  //   toggleMenu();
-  // };
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  };
 
   return (
     <header className="flex justify-between p-4 md:p-8 w-full m-auto">
@@ -44,7 +44,7 @@ export default function Header() {
         </Link>
       ) : (
         <Image
-          // onClick={handleButtonClick}
+          onClick={handleButtonClick}
           alt="Menu Icon"
           src="/menu.svg"
           width={38}
