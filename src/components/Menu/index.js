@@ -202,16 +202,20 @@ export default function Menu() {
 
   return (
     <aside
-      className={`side_menu ${
+      className={`side_menu z-10 ${
         menuController ? "left-0" : "left-[-100%]"
-      } flex flex-col justify-between p-4 md:p-0 rounded-r-2xl transition-all duration-300 gap-0 md:gap-[80px]  absolute md:static bg-[var(--green-500)] md:bg-[unset]`}
+      } flex flex-col justify-between p-4 rounded-r-2xl transition-all duration-300  ${
+        windowWidth < 990
+          ? "absolute bg-[var(--green-500)] gap-[40px]"
+          : "static md:bg-[unset] gap-0 p-0"
+      }  `}
       data-menu
     >
-      {windowWidth < 769 && (
+      {windowWidth < 990 && (
         <Image alt="Oakboard Logo" src="/oaklogo.svg" width={120} height={40} />
       )}
 
-      <nav className=" side_menu flex flex-col gap-4 md:gap-8 mt-8 md:mt-0">
+      <nav className=" side_menu flex flex-col mt-8 ps:mt-0 gap-4">
         {links.map((link) => (
           <Link
             href={
@@ -223,7 +227,7 @@ export default function Menu() {
             }
             key={link.id}
             onClick={() => setActiveLink(link.id)}
-            className={`side_menu flex gap-2 text-sm md:text-base items-center pt-2 pb-2 pl-3 md:pt-3 md:pb-3 md:pl-4 pr-12 w-[max-content] rounded-3xl transition-all duration-300 hover:bg-[var(--green-200)] font-semibold
+            className={`side_menu flex gap-2 text-sm ps:text-base items-center pt-2 pb-2 pl-3 ps:pt-3 ps:pb-3 ps:pl-4 pr-12 w-[max-content] rounded-3xl transition-all duration-300 ps:hover:bg-[var(--green-500)] font-semibold
             ${
               activeLink === link.id
                 ? "text-[var(--green-100)] bg-[var(--green-150)]"
@@ -243,7 +247,7 @@ export default function Menu() {
           Quer saber mais sobre este projeto?
         </p>
         <a
-          href="https://github.com/edusantsouza"
+          href="https://github.com/edusantsouza/oakboard"
           target="_blank"
           className=" flex items-center gap-2 bg-[var(--green-150)] px-4 py-2 md:py-4 text-sm md:text-base rounded-md w-[max-content] transition-all hover:bg-[var(--green-200)]"
         >
@@ -261,7 +265,7 @@ export default function Menu() {
         <p className=" text-[var(--white-100)] text-xs">
           Dashboard versão 1.0.0
         </p>
-        <p className="text-xs flex gap-1">
+        <p className="text-xs flex gap-1 flex-wrap">
           Desenvolvido por
           <a
             href="https://www.linkedin.com/in/eduardo-sant-souza/"

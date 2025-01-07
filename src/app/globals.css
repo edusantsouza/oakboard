@@ -11,6 +11,8 @@
   --red-500: #832424;
   --backdrop-filter: rgba(2, 2, 2, 0.6);
   --green-500: #012f19;
+  --green-600: #141c18;
+  --glass-green: rgba(12, 13, 17, 0.3);
 }
 
 body {

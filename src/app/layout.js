@@ -16,9 +16,11 @@ export default function RootLayout({ children }) {
         <body>
           <MenuProvider>
             <Header className="max-w-[1440px]" />
-            <main className="grid grid-cols-[200px_1fr_1fr] md:grid-cols-[280px_1fr_1fr] px-4 md:px-8 gap-4">
+            <main className="grid grid-cols-[200px_1fr_1fr] px-4 gap-4 ]">
               <Menu className="col-span-1" />
-              <div className="page_view col-span-3 md:col-span-2 w-full h-full p-2 md:p-8 mt-8 bg-[var(--green-500)] rounded-md md:rounded-2xl flex justify-center items-center ">
+              <div
+                className={`page_view w-full col-span-3 ps:col-span-2  h-full p-2 md:p-6 mt-8 rounded-lg flex justify-center items-center bg-[var(--glass-green)] backdrop-blur-md`}
+              >
                 {children}
               </div>
             </main>

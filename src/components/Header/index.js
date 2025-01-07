@@ -33,7 +33,7 @@ export default function Header() {
 
   return (
     <header className="flex justify-between p-4 md:p-8 w-full m-auto">
-      {windowWidth > 769 ? (
+      {windowWidth > 990 ? (
         <Link href="/" className="flex">
           <Image
             alt="Oakboard Logo"
@@ -54,8 +54,8 @@ export default function Header() {
         />
       )}
 
-      <div className="header_options max-w-[200px] flex justify-end gap-6 w-full ">
-        <div className="notifications rounded-full w-11 h-11 p-2 flex place-content-center bg-[var(--green-500)] cursor-pointer transition-all duration-300 hover:bg-[var(--green-200)]">
+      <div className="header_options max-w-[200px] flex justify-end gap-4 w-full ">
+        <div className="notifications rounded-full w-10 h-10 p-2 flex place-content-center bg-[var(--green-500)] cursor-pointer transition-all duration-300 hover:bg-[var(--green-200)]">
           <Image
             alt="Ícone de notificações"
             src="/notifications.svg"
@@ -70,7 +70,7 @@ export default function Header() {
             src="/oak.png"
             width={32}
             height={32}
-            className="w-10 h-10"
+            className="w-9 h-9"
           />
 
           <div className="profile_info w-12 hidden flex-col gap-1 md:flex">
