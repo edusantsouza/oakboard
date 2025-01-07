@@ -7,21 +7,21 @@ const ScreenWidthContext = React.createContext();
 export const ScreenWidthProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = React.useState(0);
 
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      handleResize();
+  // React.useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     handleResize();
 
-      const handleResize = () => {
-        setWindowWidth(window.innerWidth);
-      };
+  //     const handleResize = () => {
+  //       setWindowWidth(window.innerWidth);
+  //     };
 
-      window.addEventListener("resize", handleResize);
+  //     window.addEventListener("resize", handleResize);
 
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
+  //     return () => {
+  //       window.removeEventListener("resize", handleResize);
+  //     };
+  //   }
+  // }, []);
 
   return (
     <ScreenWidthContext.Provider value={windowWidth}>
