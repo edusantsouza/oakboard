@@ -44,7 +44,7 @@ export default function Header() {
         </Link>
       ) : (
         <Image
-          onClick={handleButtonClick}
+          // onClick={handleButtonClick}
           alt="Menu Icon"
           src="/menu.svg"
           width={38}
