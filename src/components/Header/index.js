@@ -12,22 +12,24 @@ export default function Header() {
   const windowWidth = useScreenWidth();
 
   React.useEffect(() => {
-    const handleMenu = (e) => {
-      if (!e.target.closest("[data-menu]")) {
-        setMenuController(false);
-      }
-    };
+    if (typeof window !== "undefined") {
+      const handleMenu = (e) => {
+        if (!e.target.closest("[data-menu]")) {
+          setMenuController(false);
+        }
+      };
 
-    window.addEventListener("click", handleMenu);
-    return () => {
-      window.removeEventListener("click", handleMenu());
-    };
+      window.addEventListener("click", handleMenu);
+      return () => {
+        window.removeEventListener("click", handleMenu());
+      };
+    }
   }, []);
 
-  const handleButtonClick = (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  };
+  // const handleButtonClick = (e) => {
+  //   e.stopPropagation();
+  //   toggleMenu();
+  // };
 
   return (
     <header className="flex justify-between p-4 md:p-8 w-full m-auto">
