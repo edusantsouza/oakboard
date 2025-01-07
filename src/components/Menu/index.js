@@ -202,7 +202,7 @@ export default function Menu() {
 
   return (
     <aside
-      className={`side_menu z-10 ${
+      className={`side_menu min-h-[700px] z-10 ${
         menuController ? "left-0" : "left-[-100%]"
       } flex flex-col justify-between p-4 rounded-r-2xl transition-all duration-300  ${
         windowWidth < 990
