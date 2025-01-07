@@ -5,7 +5,7 @@ import React from "react";
 const ScreenWidthContext = React.createContext();
 
 export const ScreenWidthProvider = ({ children }) => {
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = React.useState(0);
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
