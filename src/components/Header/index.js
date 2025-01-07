@@ -11,18 +11,18 @@ export default function Header() {
 
   const windowWidth = useScreenWidth();
 
-  const handleMenu = (e) => {
-    if (!e.target.closest("[data-menu]")) {
-      setMenuController(false);
-    }
-  };
-
-  const handleButtonClick = (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  };
-
   React.useEffect(() => {
+    const handleMenu = (e) => {
+      if (!e.target.closest("[data-menu]")) {
+        setMenuController(false);
+      }
+    };
+
+    const handleButtonClick = (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    };
+
     window.addEventListener("click", handleMenu);
     return () => {
       window.removeEventListener("click", handleMenu());
