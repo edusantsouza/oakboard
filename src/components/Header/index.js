@@ -18,16 +18,16 @@ export default function Header() {
       }
     };
 
-    const handleButtonClick = (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    };
-
     window.addEventListener("click", handleMenu);
     return () => {
       window.removeEventListener("click", handleMenu());
     };
   }, []);
+
+  const handleButtonClick = (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  };
 
   return (
     <header className="flex justify-between p-4 md:p-8 w-full m-auto">
