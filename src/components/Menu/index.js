@@ -8,20 +8,10 @@ import { useScreenWidth } from "@/context/ScreenWidthContext";
 
 export default function Menu() {
   const [activeLink, setActiveLink] = React.useState(null);
-
-  const activeFirstItem = () => {
-    setActiveLink(1);
-  };
-
   const { menuController } = useMenu();
-
   const windowWidth = useScreenWidth();
 
-  React.useEffect(() => {
-    activeFirstItem();
-  }, []);
-
-  const links = [
+  const navOptions = [
     {
       id: 1,
       label: "Home",
@@ -202,12 +192,12 @@ export default function Menu() {
 
   return (
     <aside
-      className={`side_menu min-h-[700px] z-10 ${
+      className={`side_menu xms:min-h-[700px] z-10 ${
         menuController ? "left-0" : "left-[-100%]"
       } flex flex-col justify-between p-4 rounded-r-2xl transition-all duration-300  ${
         windowWidth < 990
-          ? "absolute bg-[var(--green-500)] gap-[40px]"
-          : "static md:bg-[unset] gap-0 p-0"
+          ? "absolute bg-[var(--green-500)]"
+          : "static md:bg-[unset] gap-12 p-0"
       }  `}
       data-menu
     >
@@ -216,7 +206,7 @@ export default function Menu() {
       )}
 
       <nav className=" side_menu flex flex-col mt-8 ps:mt-0 gap-4">
-        {links.map((link) => (
+        {navOptions.map((link) => (
           <Link
             href={
               link.label.toLowerCase() === "home"
@@ -229,7 +219,7 @@ export default function Menu() {
             onClick={() => setActiveLink(link.id)}
             className={`side_menu flex gap-2 text-sm ps:text-base items-center pt-2 pb-2 pl-3 ps:pt-3 ps:pb-3 ps:pl-4 pr-12 w-[max-content] rounded-3xl transition-all duration-300 ps:hover:bg-[var(--green-500)] font-semibold
             ${
-              activeLink === link.id
+              false
                 ? "text-[var(--green-100)] bg-[var(--green-150)]"
                 : "text-[var(--withe-100)]"
             }`}
@@ -242,7 +232,7 @@ export default function Menu() {
         ))}
       </nav>
 
-      <div className="notice flex flex-col gap-4 max-w-[160px] mt-12 md:mt-0">
+      <div className="notice flex flex-col gap-4 max-w-[160px] mt-12 ps:mt-0">
         <p className="text-sm md:text-base text-[var(--white-100)] font-medium ">
           Quer saber mais sobre este projeto?
         </p>
@@ -261,10 +251,7 @@ export default function Menu() {
         </a>
       </div>
 
-      <div className=" info_app flex flex-col gap-4 mt-12 md:mt-0">
-        <p className=" text-[var(--white-100)] text-xs">
-          Dashboard versão 1.0.0
-        </p>
+      <div className=" info_app flex flex-col gap-4 mt-12 ps:mt-0">
         <p className="text-xs flex gap-1 flex-wrap">
           Desenvolvido por
           <a
@@ -278,6 +265,9 @@ export default function Menu() {
           >
             Eduardo Sant
           </a>
+        </p>
+        <p className=" text-[var(--white-100)] text-xs">
+          Dashboard versão 1.0.0
         </p>
       </div>
     </aside>

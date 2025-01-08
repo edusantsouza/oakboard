@@ -15,6 +15,15 @@ export default {
         ps: "990px",
         xsm: "540px",
       },
+      keyframes: {
+        fade: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.6" },
+        },
+      },
+      animation: {
+        fade: "fade 1.5s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
