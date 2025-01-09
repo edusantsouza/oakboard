@@ -8,6 +8,27 @@ import { useProductsController } from "@/context/ProductsContext";
 import { useScreenWidth } from "@/context/ScreenWidthContext";
 import { useRegisterContext } from "@/context/RegisterModalContext";
 
+function formatToBRL(value) {
+  let sanitizedValue = value.replace(/[^0-9.]/g, "");
+
+  if (sanitizedValue.includes(".")) {
+    sanitizedValue = sanitizedValue.replace(".", ",");
+  }
+
+  const parts = sanitizedValue.split(",");
+  if (parts.length === 1) {
+    sanitizedValue = `${parts[0]},00`;
+  } else if (parts[1].length === 1) {
+    sanitizedValue = `${parts[0]},${parts[1]}0`;
+  } else if (parts[1].length > 2) {
+    sanitizedValue = `${parts[0]},${parts[1].slice(0, 2)}`;
+  }
+
+  const formattedValue = sanitizedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+  return `R$ ${formattedValue}`;
+}
+
 const ProductInfo = ({ label, value, isMobile }) => (
   <p className="text-xs text-center md:text-sm gap-1 flex flex-col xsm:flex-row xsm:justify-center justify-start items-start">
     <span className="font-bold text-[var(--green-100)]">
@@ -50,7 +71,7 @@ const ProductItem = ({ item, windowWidth }) => (
 
     <ProductInfo
       label="Preço"
-      value={`R$ ${item.price}`}
+      value={formatToBRL(item.price)}
       isMobile={windowWidth < 540}
     />
     <ProductInfo

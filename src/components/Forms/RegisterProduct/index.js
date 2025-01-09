@@ -34,14 +34,16 @@ export default function RegisterProduct() {
   const modalController = () => {
     if (modalState) {
       return (
-        <div className="wrapper overflow-scroll pt-[120px] p-6 md:overflow-auto fixed inset-0 z-50 flex items-center justify-center bg-[var(--backdrop-color)] text-white backdrop-blur-sm">
+        <div className="wrapper overflow-scroll pt-[200px] p-6 md:overflow-auto fixed inset-0 z-50 flex items-center justify-center bg-[var(--backdrop-color)] text-white backdrop-blur-sm">
           <form
             onSubmit={handleSubmit}
-            className="bg-[var(--green-600)] flex flex-col justify-between w-full md:max-w-[990px]  md:min-h-[500px] rounded-lg px-4 py-6"
+            className="bg-[var(--green-600)] flex flex-col justify-between w-full md:max-w-[990px]  md:min-h-[500px] rounded-lg  py-6"
           >
-            <h1 className="px-4 text-2xl mb-8">Cadastre um novo produto</h1>
+            <h1 className="px-4 text-lg md:text-2xl  mb-8">
+              Cadastre um novo produto
+            </h1>
             <div className="flex flex-col md:flex-row justify-start items-start">
-              <div className="flex flex-col gap-10 p-4 w-full h-full">
+              <div className="flex flex-col gap-10 p-3 md:p-4 w-full h-full">
                 <div className="flex flex-row md:flex-col gap-6">
                   <div className="flex flex-col items-start justify-center gap-2">
                     <label
@@ -102,7 +104,7 @@ export default function RegisterProduct() {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-10 p-4 w-full max-w-[250px]">
+              <div className="flex flex-col gap-10 p-3 md:p-4  w-full max-w-[250px]">
                 <div className="flex flex-col items-start justify-center gap-2">
                   <label
                     htmlFor="category"
