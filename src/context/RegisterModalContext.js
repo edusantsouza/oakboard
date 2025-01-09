@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 
-const RegisterContext = React.createContext();
+const RegisterContext = createContext();
 
 export function RegisterControllerProvider({ children }) {
-  const [modalState, setModalState] = React.useState(false);
-  const [product, setProduct] = React.useState({
+  const [modalState, setModalState] = useState(false);
+  const [product, setProduct] = useState({
     name: "",
     description: "",
     category: "",
@@ -14,12 +14,16 @@ export function RegisterControllerProvider({ children }) {
     status: "",
     image: null,
   });
-  const [products, setProducts] = React.useState(() => {
-    return JSON.parse(localStorage.getItem("products")) || [];
-  });
+  const [products, setProducts] = useState([]);
+
+  // Carregar os produtos do localStorage apenas no cliente
+  useEffect(() => {
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(savedProducts);
+  }, []);
 
   const saveProduct = () => {
-    const newProduct = { ...product, id: Date.now() };
+    const newProduct = { ...product, id: Date.now() }; // Adicionando um ID único
     const updatedProducts = [...products, newProduct];
 
     // Atualizar o localStorage e o estado
@@ -58,7 +62,7 @@ export function RegisterControllerProvider({ children }) {
 }
 
 export const useRegisterContext = () => {
-  const context = React.useContext(RegisterContext);
+  const context = useContext(RegisterContext);
 
   if (context === undefined) {
     throw new Error(
