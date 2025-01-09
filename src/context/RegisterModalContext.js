@@ -16,7 +16,6 @@ export function RegisterControllerProvider({ children }) {
   });
   const [products, setProducts] = useState([]);
 
-  // Carregar os produtos do localStorage apenas no cliente
   useEffect(() => {
     const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(savedProducts);
@@ -41,6 +40,20 @@ export function RegisterControllerProvider({ children }) {
     });
   };
 
+  const resetValues = () => {
+    localStorage.clear(); // Limpar o localStorage
+    setProducts([]); // Atualizar o estado para refletir a limpeza
+  };
+
+  const deleteProduct = (id) => {
+    // Filtrar produtos excluindo o produto com o ID especificado
+    const updatedProducts = products.filter((prod) => prod.id !== id);
+
+    // Atualizar o localStorage e o estado
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    setProducts(updatedProducts);
+  };
+
   const handleModal = () => {
     setModalState(!modalState);
   };
@@ -53,7 +66,9 @@ export function RegisterControllerProvider({ children }) {
         saveProduct,
         setProduct,
         product,
-        products, // Compartilhando a lista de produtos
+        products,
+        resetValues,
+        deleteProduct, // Expor a função de exclusão
       }}
     >
       {children}

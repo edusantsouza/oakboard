@@ -5,13 +5,17 @@ import AddProductBtn from "@/components/Buttons/AddProduct";
 import ProductsView from "@/components/ProductsView";
 
 import SearchProduct from "@/components/Forms/SearchProduct";
+import ClearProductsList from "@/components/Buttons/clearProducts";
 
 export default function Produtos() {
   return (
     <div className="flex flex-col w-full h-full">
       <div className="header_produtos flex w-full justify-between">
         <SearchProduct />
-        <AddProductBtn isResponsible={true} />
+        <div className="flex justify-center items-center gap-2 md:gap-4">
+          <ClearProductsList isResponsible={true} />
+          <AddProductBtn isResponsible={true} />
+        </div>
       </div>
 
       <div className="flex flex-col w-full gap-2  mt-4 ">
