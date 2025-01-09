@@ -34,7 +34,7 @@ export default function RegisterProduct() {
   const modalController = () => {
     if (modalState) {
       return (
-        <div className="wrapper overflow-scroll pt-[250px] p-6 md:overflow-auto fixed inset-0 z-50 flex items-center justify-center bg-[var(--backdrop-color)] text-white backdrop-blur-sm">
+        <div className="wrapper overflow-scroll pt-[250px] sm:pt-0 p-6 md:overflow-auto fixed inset-0 z-50 flex items-center justify-center bg-[var(--backdrop-color)] text-white backdrop-blur-sm">
           <form
             onSubmit={handleSubmit}
             className="bg-[var(--green-600)] flex flex-col justify-between w-full md:max-w-[990px]  md:min-h-[500px] rounded-lg  py-6"
