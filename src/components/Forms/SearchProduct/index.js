@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import { useScreenWidth } from "@/context/ScreenWidthContext";
-import { useProductController } from "@/context/ProductContext";
+import { useProductsController } from "@/context/ProductsContext";
 
 export default function SearchProduct() {
-  const { clearSearch, handleSearch, searchValue } = useProductController();
+  const { clearSearch, handleSearch, searchValue } = useProductsController();
   const windowWidth = useScreenWidth();
 
   return (

@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import ProductNotFound from "@/components/Info/ProductNotFound";
 import SearchNotFound from "@/components/Info/SearchNotFound";
 import UpdateProductBtn from "@/components/Buttons/UpdateProduct";
 import DeleteProductBtn from "@/components/Buttons/DeleteProduct";
-import { useProductController } from "@/context/ProductContext";
+import { useProductsController } from "@/context/ProductsContext";
 import { useScreenWidth } from "@/context/ScreenWidthContext";
+import { useRegisterContext } from "@/context/RegisterModalContext";
 
 const ProductInfo = ({ label, value, isMobile }) => (
   <p className="text-xs text-center md:text-sm gap-1 flex flex-col xsm:flex-row xsm:justify-center justify-start items-start">
@@ -14,11 +14,11 @@ const ProductInfo = ({ label, value, isMobile }) => (
       {isMobile && `${label}: `}
     </span>
     <span
-      className={`font-semibold ${
+      className={`font-medium ${
         label === "Status"
-          ? value.toLowerCase() === "em estoque"
+          ? value.toLowerCase() === "disponível"
             ? "text-green-400"
-            : " text-red-700"
+            : "text-red-700"
           : ""
       }`}
     >
@@ -35,17 +35,17 @@ const ProductItem = ({ item, windowWidth }) => (
     } rounded grid grid-cols-2 gap-4 items-center xsm:grid-cols-5 grid-rows-2 xsm:grid-rows-1`}
   >
     <h2 className="text-xs md:text-sm flex flex-col xsm:flex-row items-start xsm:items-center gap-1">
-      <Image
+      {/* <Image
         src={item.image}
         alt="Imagem do produto"
         width={32}
         height={32}
         className="hidden xsm:flex"
-      />
+      /> */}
       <span className="font-bold text-[var(--green-100)]">
         {windowWidth < 540 ? "Produto: " : ""}
       </span>
-      {item.product}
+      {item.name}
     </h2>
 
     <ProductInfo
@@ -73,14 +73,24 @@ const ProductItem = ({ item, windowWidth }) => (
 
 export default function ProductsView() {
   const windowWidth = useScreenWidth();
-  const { searchValue, products, filteredProducts } = useProductController();
+  const { searchValue } = useProductsController();
+
+  const { products } = useRegisterContext();
+
+  const filteredProducts = products
+    ? products
+        .filter((item) =>
+          item.name.toLowerCase().includes(searchValue.toLowerCase()),
+        )
+        .sort((a, b) => a.price - b.price)
+    : [];
 
   const renderProducts = () => {
     if (searchValue && filteredProducts.length === 0) {
       return <SearchNotFound />;
     }
 
-    if (products.length === 0) {
+    if (filteredProducts.length === 0 || !filteredProducts) {
       return <ProductNotFound />;
     }
 

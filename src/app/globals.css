@@ -6,12 +6,13 @@
   --white-100: #dfdfdf;
   --grey-50: #a9a9a9;
   --green-100: #15bd81;
-  --green-200: #1c791c;
   --green-150: rgba(0, 106, 68, 0.35);
-  --red-500: #832424;
-  --backdrop-filter: rgba(2, 2, 2, 0.6);
+  --green-200: #1c791c;
+  --green-400: #092517;
   --green-500: #012f19;
   --green-600: #141c18;
+  --red-500: #832424;
+  --backdrop-color: rgba(24, 32, 25, 0.8);
   --glass-green: rgba(12, 13, 17, 0.3);
 }
 
@@ -19,4 +20,10 @@ body {
   font-family: "DM Sans", sans-serif;
   color: var(--white-100);
   background: radial-gradient(circle at center, #0f3726, #03210e);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
