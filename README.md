@@ -19,6 +19,8 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
     - (Planejado) Exibição do dia e hora da última alteração ou cadastro realizado.
   - Ações desacopladas para que o cadastro funcione tanto com localStorage quanto com um banco de dados externo.
 
+![Tela de Cadastro de Produto](image.png)
+
 ### Listagem de Produtos
 - Exibe uma lista dos produtos cadastrados, com as seguintes colunas:
   - Nome do produto.
@@ -49,19 +51,18 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
 
 - **Loading Animations:**
   - Animação para ações como "Cadastrando...", "Excluindo..".
-- **Modularidade do código:**
-  - Tendo em mente que gostaria de usar o Firebase para persistência de dados e criação de sessões para cada usuário, estruturei o código para que seja facilmente desacoplado do LocalStorage.  
+
 - **Pré-configuração para Firebase:**
   - A aplicação está preparada para autenticação de sessão de usuário e futuras expansões, como painéis personalizados e CRUD atrelado ao usuário autenticado.
 
 ---
 
-## O que ainda está em desenvolvimento
+## Futuros Updates
 
 - **Validação de ID:**
   - Geração automática de um ID fixo de 6 dígitos.
   - Prevenção de alterações manuais no campo do ID.
-- **Modal de confirmação:**
+- **Modais de confirmação:**
   - Confirmação antes de excluir um item.
   - Notificação de sucesso ao concluir o cadastro.
   - Notificação de sucesso ao excluir o produto.
@@ -71,6 +72,12 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
   - Exibição do momento da última alteração ou cadastro de cada produto.
 - **Animações adicionais:**
   - Entrada e saída de modais, para uma transição mais fluida.
+- **Paginação:**
+  - Limitar a quantidade de itens na lista e adicionar visualização por páginas.
+- **Notificações:**
+  - Adicionar notificações ao deletar, adicionar ou excluir itens.
+- **Autenticação com o Firebase:**
+  - Em breve criarei um sistema de login e persistência de dados por usuário na aplicação usando o Firebase.  
 
 ---
 
