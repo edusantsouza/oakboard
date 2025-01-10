@@ -30,7 +30,7 @@ export default function Produtos() {
             Categoria
           </span>
           <span className="text-sm font-semibold justify-self-center">
-            Status
+            Disponível para venda
           </span>
           <span className="text-sm font-semibold justify-self-center">
             Ações

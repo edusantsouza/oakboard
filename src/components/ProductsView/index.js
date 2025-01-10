@@ -37,7 +37,7 @@ const ProductInfo = ({ label, value, isMobile }) => (
     <span
       className={`font-medium ${
         label === "Status"
-          ? value.toLowerCase() === "disponível"
+          ? value.toLowerCase() === "sim"
             ? "text-green-400"
             : "text-red-700"
           : ""

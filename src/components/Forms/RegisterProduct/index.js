@@ -125,7 +125,7 @@ export default function RegisterProduct() {
                     htmlFor="status"
                     className="text-sm text-[var(--white-100)] font-semibold"
                   >
-                    Status
+                    Disponível para venda
                   </label>
                   <select
                     className="bg-[var(--green-500)] p-3 col-start-1 col-end-1 row-start-1 row-end-1 rounded-[4px] text-xs md:text-sm focus:outline-[var(--green-100)] focus:outline-dotted placeholder:text-[var(--grey-50)] w-full max-w-[200px]"
@@ -135,9 +135,9 @@ export default function RegisterProduct() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="">Selecione um status</option>
-                    <option value="Disponível">Em estoque</option>
-                    <option value="Indisponível">Indisponível</option>
+                    <option value="">Selecione uma opção</option>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
                   </select>
                 </div>
               </div>
