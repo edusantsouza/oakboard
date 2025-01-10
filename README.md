@@ -39,11 +39,15 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
 - (Concluído) Edição de produtos:
   - Permite abrir o modal de cadastro com os campos pré-preenchidos para edição.
 
+![Tela de Lista de Produtos](image-1.png)
+
 ### Responsividade
 - A interface é completamente responsiva, garantindo uma experiência de usuário fluida em dispositivos desktop, tablet e mobile.
 
 ### Navegação
 - Implementação de tabs para navegação entre diferentes telas da aplicação.
+
+![Estrutura de Pastas](image-3.png)
 
 ---
 
@@ -54,6 +58,8 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
 
 - **Pré-configuração para Firebase:**
   - A aplicação está preparada para autenticação de sessão de usuário e futuras expansões, como painéis personalizados e CRUD atrelado ao usuário autenticado.
+
+![Em construção](image-2.png)
 
 ---
 
@@ -76,6 +82,8 @@ Bem-vindo ao Oakboard! Este é um projeto desenvolvido como parte de um teste t�
   - Limitar a quantidade de itens na lista e adicionar visualização por páginas.
 - **Notificações:**
   - Adicionar notificações ao deletar, adicionar ou excluir itens.
+- **Adição de imagens no cadastro:**
+  - Adicionar e editar uma imagem padrão para cada produto.
 - **Autenticação com o Firebase:**
   - Em breve criarei um sistema de login e persistência de dados por usuário na aplicação usando o Firebase.  
 
