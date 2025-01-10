@@ -6,7 +6,7 @@ export default function RegisterActions({ cancelRegister, clearImage }) {
         type="submit"
         onClick={() => {
           cancelRegister();
-          clearImage();
+          // clearImage();
         }}
       >
         Cancelar

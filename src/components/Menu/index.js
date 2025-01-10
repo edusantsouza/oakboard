@@ -217,7 +217,7 @@ export default function Menu() {
             }
             key={link.id}
             onClick={() => setActiveLink(link.id)}
-            className={`side_menu flex gap-2 text-sm ps:text-base items-center pt-2 pb-2 pl-3 ps:pt-3 ps:pb-3 ps:pl-4 pr-12 w-[max-content] rounded-3xl transition-all duration-300 ps:hover:bg-[var(--green-500)] font-semibold
+            className={`side_menu flex gap-2 text-sm ps:text-base items-center pt-2 pb-2 pl-3 ps:pt-3 ps:pb-3 ps:pl-4 pr-8 w-[max-content] rounded-3xl transition-all duration-300 ps:hover:bg-[var(--green-500)] font-semibold
             ${
               false
                 ? "text-[var(--green-100)] bg-[var(--green-150)]"

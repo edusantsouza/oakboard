@@ -6,8 +6,6 @@ import RegisterActions from "@/components/Buttons/RegisterActions";
 import { useRegisterContext } from "@/context/RegisterModalContext";
 
 export default function RegisterProduct() {
-  //criar o contexto que controla as notificações e a abertura/fechamento do modal
-  //colocar toda a a parte de cadastro de produto no productcontext e trazer as informações pra cá
   const { modalState, handleModal, saveProduct, setProduct, product } =
     useRegisterContext();
 
@@ -18,16 +16,11 @@ export default function RegisterProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!product.name || !product.price) {
-      alert("Por favor, preencha os campos obrigatórios!");
-      return;
-    }
     saveProduct();
     handleModal();
   };
 
   const cancelRegister = () => {
-    console.log("cadastro cancelado");
     handleModal();
   };
 
@@ -37,7 +30,7 @@ export default function RegisterProduct() {
         <div className="wrapper overflow-scroll pt-[250px] sm:pt-0 p-6 md:overflow-auto fixed inset-0 z-50 flex items-center justify-center bg-[var(--backdrop-color)] text-white backdrop-blur-sm">
           <form
             onSubmit={handleSubmit}
-            className="bg-[var(--green-600)] flex flex-col justify-between w-full md:max-w-[990px]  md:min-h-[500px] rounded-lg  py-6"
+            className="bg-[var(--green-600)] flex flex-col justify-between w-full md:max-w-[990px] md:px-3 md:min-h-[500px] rounded-lg  py-6"
           >
             <h1 className="px-4 text-lg md:text-2xl  mb-8">
               Cadastre um novo produto

@@ -8,7 +8,7 @@ import { useProductsController } from "@/context/ProductsContext";
 import { useScreenWidth } from "@/context/ScreenWidthContext";
 import { useRegisterContext } from "@/context/RegisterModalContext";
 
-function formatToBRL(value) {
+const formatToBRL = (value) => {
   let sanitizedValue = value.replace(/[^0-9.]/g, "");
 
   if (sanitizedValue.includes(".")) {
@@ -27,7 +27,7 @@ function formatToBRL(value) {
   const formattedValue = sanitizedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   return `R$ ${formattedValue}`;
-}
+};
 
 const ProductInfo = ({ label, value, isMobile }) => (
   <p className="text-xs text-center md:text-sm gap-1 flex flex-col xsm:flex-row xsm:justify-center justify-start items-start">
@@ -95,11 +95,10 @@ const ProductItem = ({ item, windowWidth }) => (
 export default function ProductsView() {
   const windowWidth = useScreenWidth();
   const { searchValue } = useProductsController();
+  const { productsArray } = useRegisterContext();
 
-  const { products } = useRegisterContext();
-
-  const filteredProducts = products
-    ? products
+  const filteredProducts = productsArray
+    ? productsArray
         .filter((item) =>
           item.name.toLowerCase().includes(searchValue.toLowerCase()),
         )

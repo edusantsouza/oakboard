@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React from "react";
 
-const RegisterContext = createContext();
+const RegisterContext = React.createContext();
 
 export function RegisterControllerProvider({ children }) {
-  const [modalState, setModalState] = useState(false);
-  const [product, setProduct] = useState({
+  const [modalState, setModalState] = React.useState(false);
+  const [product, setProduct] = React.useState({
     name: "",
     description: "",
     category: "",
@@ -14,22 +14,20 @@ export function RegisterControllerProvider({ children }) {
     status: "",
     image: null,
   });
-  const [products, setProducts] = useState([]);
+  const [productsArray, setProductsArray] = React.useState([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
-    setProducts(savedProducts);
+    setProductsArray(savedProducts);
   }, []);
 
   const saveProduct = () => {
-    const newProduct = { ...product, id: Date.now() }; // Adicionando um ID único
-    const updatedProducts = [...products, newProduct];
+    const newProduct = { ...product, id: Date.now() };
+    const updatedProducts = [...productsArray, newProduct];
 
-    // Atualizar o localStorage e o estado
     localStorage.setItem("products", JSON.stringify(updatedProducts));
-    setProducts(updatedProducts);
+    setProductsArray(updatedProducts);
 
-    // Resetar o produto
     setProduct({
       name: "",
       description: "",
@@ -40,18 +38,22 @@ export function RegisterControllerProvider({ children }) {
     });
   };
 
-  const resetValues = () => {
-    localStorage.clear(); // Limpar o localStorage
-    setProducts([]); // Atualizar o estado para refletir a limpeza
+  const deleteProduct = (id) => {
+    const updatedProducts = productsArray.filter((prod) => prod.id !== id);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    setProductsArray(updatedProducts);
   };
 
-  const deleteProduct = (id) => {
-    // Filtrar produtos excluindo o produto com o ID especificado
-    const updatedProducts = products.filter((prod) => prod.id !== id);
+  const updateProduct = (id) => {
+    const selectedProduct = productsArray.find((prod) => prod.id === id);
+    setProduct(selectedProduct);
+    setModalState(!modalState);
+    deleteProduct(id);
+  };
 
-    // Atualizar o localStorage e o estado
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-    setProducts(updatedProducts);
+  const resetValues = () => {
+    localStorage.clear();
+    setProductsArray([]);
   };
 
   const handleModal = () => {
@@ -66,9 +68,10 @@ export function RegisterControllerProvider({ children }) {
         saveProduct,
         setProduct,
         product,
-        products,
+        productsArray,
         resetValues,
-        deleteProduct, // Expor a função de exclusão
+        deleteProduct,
+        updateProduct,
       }}
     >
       {children}
@@ -77,7 +80,7 @@ export function RegisterControllerProvider({ children }) {
 }
 
 export const useRegisterContext = () => {
-  const context = useContext(RegisterContext);
+  const context = React.useContext(RegisterContext);
 
   if (context === undefined) {
     throw new Error(

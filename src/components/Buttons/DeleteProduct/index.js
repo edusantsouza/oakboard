@@ -1,9 +1,12 @@
+import { useRegisterContext } from "@/context/RegisterModalContext";
+
 export default function DeleteProductBtn({ id }) {
+  const { deleteProduct } = useRegisterContext();
   return (
     <button
       className="p-2"
       id="delete-button"
-      onClick={() => console.log("Item número ", id, " deletado com sucesso.")}
+      onClick={() => deleteProduct(id)}
     >
       <svg
         width="20"

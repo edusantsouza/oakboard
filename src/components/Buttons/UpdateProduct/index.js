@@ -1,11 +1,13 @@
+import { useRegisterContext } from "@/context/RegisterModalContext";
+
 export default function UpdateProductBtn({ id }) {
+  const { updateProduct } = useRegisterContext();
+
   return (
     <button
       className="p-2"
       id="update-button"
-      onClick={() =>
-        console.log("Item número ", id, " atualizado com sucesso.")
-      }
+      onClick={() => updateProduct(id)}
     >
       <svg
         width="16"
