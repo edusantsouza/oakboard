@@ -29,7 +29,7 @@ export default function Produtos() {
           <span className="text-sm font-semibold justify-self-center">
             Categoria
           </span>
-          <span className="text-sm font-semibold justify-self-center">
+          <span className="text-sm font-semibold justify-self-center text-start">
             Disponível para venda
           </span>
           <span className="text-sm font-semibold justify-self-center">

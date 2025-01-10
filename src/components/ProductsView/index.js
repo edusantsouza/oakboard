@@ -31,8 +31,8 @@ const formatToBRL = (value) => {
 
 const ProductInfo = ({ label, value, isMobile }) => (
   <p className="text-xs text-center md:text-sm gap-1 flex flex-col xsm:flex-row xsm:justify-center justify-start items-start">
-    <span className="font-bold text-[var(--green-100)]">
-      {isMobile && `${label}: `}
+    <span className="font-bold text-[var(--green-100)] text-start">
+      {isMobile && `${label === "Status" ? "Disponível para venda" : label} `}
     </span>
     <span
       className={`font-medium ${
